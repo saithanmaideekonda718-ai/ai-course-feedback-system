@@ -1,9 +1,9 @@
 import express from "express";
-import { submitFeedback } from "../controllers/feedbackController.js";
 import { protect } from "../middleware/authMiddleware.js";
+import { getFacultyFeedback } from "../controllers/facultyController.js";
 
 const router = express.Router();
 
-router.post("/submit-feedback", protect, submitFeedback);
+router.get("/faculty-feedback", protect, getFacultyFeedback);
 
 export default router;

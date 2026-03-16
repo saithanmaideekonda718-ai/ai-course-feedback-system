@@ -1,7 +1,30 @@
-export const getCourses = (req, res) => {
-    res.json({ message: "Get all courses" })
-}
+import Course from "../models/Course.js";
 
-export const addCourse = (req, res) => {
-    res.json({ message: "Course added" })
-}
+export const createCourse = async (req, res) => {
+  try {
+
+    const { courseName, semester } = req.body;
+
+    const course = await Course.create({
+      courseName,
+      semester
+    });
+
+    res.json(course);
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getCourses = async (req, res) => {
+  try {
+
+    const courses = await Course.find();
+
+    res.json(courses);
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

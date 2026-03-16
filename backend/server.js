@@ -8,6 +8,11 @@ import authRoutes from "./routes/authRoutes.js"
 import courseRoutes from "./routes/courseRoutes.js"
 import feedbackRoutes from "./routes/feedbackRoutes.js"
 
+import facultyRoutes from "./routes/facultyRoutes.js";
+import analyticsRoutes from "./routes/analyticsRoutes.js";
+import { errorHandler } from "./middleware/errorMiddleware.js";
+
+
 dotenv.config()
 
 const app = express()
@@ -20,6 +25,9 @@ dbConnect()
 app.use("/api/auth",authRoutes)
 app.use("/api/courses",courseRoutes)
 app.use("/api/feedback",feedbackRoutes)
+app.use("/api", facultyRoutes);
+app.use("/api", analyticsRoutes);
+app.use(errorHandler);
 
 app.get("/",(req,res)=>{
     res.send("Server Running")

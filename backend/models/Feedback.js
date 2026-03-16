@@ -1,27 +1,19 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 const feedbackSchema = new mongoose.Schema({
 
-    courseId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Course"
-    },
+  course: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course"
+  },
 
-    rating:{
-        type:Number,
-        required:true
-    },
+  comment: String,
 
-    comment:{
-        type:String
-    },
+  sentiment: {
+    type: String,
+    enum: ["positive", "neutral", "negative"]
+  },
 
-    sentiment:{
-        type:String
-    }
+}, { timestamps: true });
 
-},{timestamps:true})
-
-const Feedback = mongoose.model("Feedback",feedbackSchema)
-
-export default Feedback
+export default mongoose.model("Feedback", feedbackSchema);

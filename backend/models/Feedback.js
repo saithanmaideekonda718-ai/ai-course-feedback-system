@@ -1,18 +1,13 @@
 import mongoose from "mongoose";
 
 const feedbackSchema = new mongoose.Schema({
-
-  course: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Course"
-  },
-
+  course: String,
+  faculty: String,
+  rating: Number,
   comment: String,
 
-  sentiment: {
-    type: String,
-    enum: ["positive", "neutral", "negative"]
-  },
+  anonymousId: String,   
+  sentiment: String
 
 }, { timestamps: true });
 

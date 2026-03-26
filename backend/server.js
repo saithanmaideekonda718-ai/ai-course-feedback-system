@@ -25,8 +25,8 @@ dbConnect()
 app.use("/api/auth",authRoutes)
 app.use("/api/courses",courseRoutes)
 app.use("/api/feedback",feedbackRoutes)
-app.use("/api", facultyRoutes);
-app.use("/api", analyticsRoutes);
+app.use("/api/faculty", facultyRoutes);
+app.use("/api/analytics", analyticsRoutes);
 app.use(errorHandler);
 
 app.get("/",(req,res)=>{

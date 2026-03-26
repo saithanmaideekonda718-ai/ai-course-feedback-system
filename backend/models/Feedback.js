@@ -17,7 +17,9 @@ const feedbackSchema = new mongoose.Schema({
   },
   sentiment: {
     type: String,
-    enum: ["positive", "neutral", "negative"]
+    enum: ["positive", "neutral", "negative"],
+    default: "neutral"
+
   }
 }, { timestamps: true });
 

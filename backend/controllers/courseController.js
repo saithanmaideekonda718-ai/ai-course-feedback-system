@@ -3,11 +3,12 @@ import Course from "../models/Course.js";
 export const createCourse = async (req, res) => {
   try {
 
-    const { courseName, semester } = req.body;
+    const { courseName, department } = req.body;
 
     const course = await Course.create({
       courseName,
-      semester
+      department,
+      facultyId: req.user.id   
     });
 
     res.json(course);

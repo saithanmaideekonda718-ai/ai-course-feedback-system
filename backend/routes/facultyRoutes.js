@@ -4,6 +4,6 @@ import { getFacultyFeedback } from "../controllers/facultyController.js";
 
 const router = express.Router();
 
-router.get("/faculty-feedback", protect, getFacultyFeedback);
+router.get("/feedback", protect, getFacultyFeedback);
 
 export default router;

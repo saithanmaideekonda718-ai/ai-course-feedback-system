@@ -25,14 +25,22 @@ export const courseSentimentAnalytics = async (req, res) => {
 export const courseRatings = async (req, res) => {
   try {
     const ratings = await Feedback.aggregate([
-      {
-        $group: {
-          _id: "$courseId",
-          averageRating: { $avg: "$rating" },
-          totalRatings: { $sum: 1 }
-        }
-      }
-    ])
+  {
+    $group: {
+      _id: "$courseId",
+      averageRating: { $avg: "$rating" },
+      totalRatings: { $sum: 1 }
+    }
+  },
+  {
+    $lookup: {
+      from: "courses",
+      localField: "_id",
+      foreignField: "_id",
+      as: "course"
+    }
+  }
+])
 
     res.json(ratings)
   } catch (error) {

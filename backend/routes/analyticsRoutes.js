@@ -1,20 +1,25 @@
-import express from "express"
+import express from "express";
 
 import {
   courseSentimentAnalytics,
   courseRatings,
   feedbackTrend
-} from "../controllers/analyticsController.js"
+} from "../controllers/analyticsController.js";
 
-const router = express.Router()
-router.get("/analytics", (req, res) => {
-  res.json({ message: "Analytics API working" })
-})
+const router = express.Router();
 
-router.get("/analytics/course-sentiment", courseSentimentAnalytics)
+/* Test Route */
+router.get("/", (req, res) => {
+  res.json({ message: "Analytics API working" });
+});
 
-router.get("/analytics/course-ratings", courseRatings)
+/* Sentiment Analytics */
+router.get("/course-sentiment", courseSentimentAnalytics);
 
-router.get("/analytics/feedback-trend", feedbackTrend)
+/* Course Ratings */
+router.get("/course-ratings", courseRatings);
 
-export default router
+/* Feedback Trend */
+router.get("/feedback-trend", feedbackTrend);
+
+export default router;

@@ -3,11 +3,12 @@ import Course from "../models/Course.js";
 export const createCourse = async (req, res) => {
   try {
 
-    const { courseName, department } = req.body;
+    const { courseName, department, semester } = req.body;
 
     const course = await Course.create({
       courseName,
       department,
+      semester,
       facultyId: req.user.id   
     });
 
@@ -20,8 +21,8 @@ export const createCourse = async (req, res) => {
 
 export const getCourses = async (req, res) => {
   try {
-
-    const courses = await Course.find();
+    const courses = await Course.find()
+      .populate("facultyId", "name email");
 
     res.json(courses);
 

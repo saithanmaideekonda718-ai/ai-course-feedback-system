@@ -22,7 +22,7 @@ const getSentiment = (comment) => {
 export const createFeedback = async (req, res) => {
   try {
     const { courseId, rating, comment } = req.body;
-
+    
     // Validation
     if (!courseId || !rating) {
       return res.status(400).json({ message: "courseId and rating are required" });
@@ -32,14 +32,15 @@ export const createFeedback = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(courseId)) {
       return res.status(400).json({ message: "Invalid courseId" });
     }
-
+    const anonymousId = Math.random().toString(36).substring(2, 8);
     const sentiment = getSentiment(comment);
 
     const feedback = await Feedback.create({
       courseId,
       rating,
       comment,
-      sentiment
+      sentiment,
+      anonymousId
     });
 
     res.status(201).json(feedback);

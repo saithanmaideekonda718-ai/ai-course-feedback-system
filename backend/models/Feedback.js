@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
 const feedbackSchema = new mongoose.Schema({
+  anonymousId: {
+    type: String
+  },
   courseId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course",

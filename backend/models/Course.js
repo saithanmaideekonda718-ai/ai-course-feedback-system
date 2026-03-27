@@ -12,6 +12,10 @@ const courseSchema = new mongoose.Schema({
   },
   department: {
     type: String
+  },
+  semester: {
+    type: String,
+    required: true
   }
 }, { timestamps: true });
 

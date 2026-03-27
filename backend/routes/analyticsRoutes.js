@@ -3,7 +3,8 @@ import express from "express";
 import {
   courseSentimentAnalytics,
   courseRatings,
-  feedbackTrend
+  feedbackTrend,
+  semesterPerformance
 } from "../controllers/analyticsController.js";
 
 const router = express.Router();
@@ -21,5 +22,7 @@ router.get("/course-ratings", courseRatings);
 
 /* Feedback Trend */
 router.get("/feedback-trend", feedbackTrend);
+
+router.get("/semester-performance", semesterPerformance);
 
 export default router;
